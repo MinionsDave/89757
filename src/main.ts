@@ -1,7 +1,7 @@
 // ! 必须在最前面就初始化
 // 否则常量会没有值
-// eslint-disable-next-line
-require('dotenv').config();
+import { config } from 'dotenv';
+config();
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
