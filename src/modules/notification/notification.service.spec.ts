@@ -17,7 +17,14 @@ describe('NotificationService', () => {
 
   describe('推送', () => {
     it('可以推送', async () => {
-      await notificationService.danger('单元测试');
+      await expect(
+        notificationService.push(
+          {
+            body: '推送到达测试',
+          },
+          false,
+        ),
+      ).resolves.not.toThrow();
     });
   });
 });

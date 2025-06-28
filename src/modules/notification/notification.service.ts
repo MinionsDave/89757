@@ -22,7 +22,7 @@ export class NotificationService {
     });
   }
 
-  private async push(options: BarkPushParams) {
+  async push(options: BarkPushParams, ignoreError = true) {
     try {
       const resp = await axios.post<BarkPushResp>(this.barkUrl, options, {
         headers: {
@@ -34,6 +34,10 @@ export class NotificationService {
       }
     } catch (e) {
       this.logger.error(`Bark推送失败: ${e.message}`);
+      // 主要用于单元测试看是否抛出异常
+      if (!ignoreError) {
+        throw e;
+      }
     }
   }
 }
