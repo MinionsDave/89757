@@ -10,3 +10,5 @@ RUN pnpm i
 COPY . /app
 RUN npm run build
 ENTRYPOINT ["node", "dist/main.js"]
+
+# TODO: 容器需要安装mariadb-dump

@@ -5,8 +5,8 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Nest Framework",
-      "args": ["${workspaceFolder}/src/main.ts"],
-      "runtimeExecutable": "tsx",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start:debug"], // 直接调用 npm 脚本
       "sourceMaps": true,
       "cwd": "${workspaceRoot}",
       "console": "integratedTerminal"
