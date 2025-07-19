@@ -1,5 +1,10 @@
 FROM node:24.3.0
-EXPOSE 30000
+EXPOSE 3000
+
+RUN apt-get update && \
+    apt-get install -y mariadb-client && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN mkdir /app \
     && npm i -g pnpm nrm
 RUN nrm use taobao
@@ -10,5 +15,3 @@ RUN pnpm i
 COPY . /app
 RUN npm run build
 ENTRYPOINT ["node", "dist/main.js"]
-
-# TODO: 容器需要安装mariadb-dump
